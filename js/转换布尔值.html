@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>转换布尔值</title>
+</head>
+<body>
+<script>
+
+    /**
+     * NOTE：当转换为 Boolean 类型时，以下值被认为是 false，其它都为 true。
+     *
+     * - false
+     * - undefined
+     * - null
+     * - 0
+     * - NaN
+     * - ''
+     *
+     */
+    console.log(Boolean(false));     // false
+    console.log(Boolean(undefined)); // false
+    console.log(Boolean(null));      // false
+    console.log(Boolean(0));         // false
+    console.log(Boolean(NaN));       // false
+    console.log(Boolean(''));        // false
+
+    // 与 PHP 的布尔判断不同
+    console.log(Boolean('0'));       // true
+    console.log(Boolean([]));        // true
+    console.log(Boolean({}));        // true
+
+    /**
+     * NOTE：布尔类型和其它类型作比较，布尔类型会转换成 Number 类型。
+     */
+    console.log([] == false); // true   <=> console.log(0 == 0);
+    console.log({} == false); // false  <=> console.log(NaN == 0);
+</script>
+</body>
+</html>
