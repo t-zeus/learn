@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>函数表达式</title>
+</head>
+<body>
+<script>
+  /**
+   * - 函数表达式可以提供函数名，可以用于在函数内部代指其本身。
+   * - 将函数传递给另一个函数时，函数表达式很方便。
+   */
+
+  function map(func, arr) {
+    let ret = [];
+    for (let i = 0; i < arr.length; i++) {
+      ret[i] = func(arr[i]);
+    }
+    return ret;
+  }
+
+  let f = function (x) {
+    return x * x * x;
+  }
+
+  let numbers = [1, 2, 3];
+  let cube = map(f, numbers);
+
+  console.log(cube);
+
+</script>
+</body>
+</html>
