@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>arguments对象</title>
+</head>
+<body>
+<script>
+  // NOTE：函数的实际参数会被保存在一个类似数组的 arguments 对象中。
+  // 将参数转换成字符串
+  function join(separator) {
+    let ret = '';
+    for (let i = 1; i < arguments.length; i++) {
+      ret += arguments[i] + separator;
+    }
+    return ret;
+  }
+
+  console.log(join(';', 1, 2, 3));
+</script>
+</body>
+</html>
