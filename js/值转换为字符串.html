@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>值转换为字符串</title>
+</head>
+<body>
+<script>
+  /**
+   * 将一个值转换成字符串有 3 种方法：
+   * - value.toString：这种方式不能转换 null、undefined
+   * - "" + value
+   * - String(value)
+   */
+  let $null = null;
+  let $undefined = undefined;
+  let $nan = NaN;
+  let $infinity = 1.7976931348623157E+10308;
+  let $object = {};
+  let $function = () => {};
+  let $array = [1, 2];
+  let $number = 123;
+  let $boolean = true;
+
+  console.group('value.toString');
+  // console.log($null.toString()); // 报错
+  // console.log($undefined.toString()); // 报错
+  console.log($nan.toString());
+  console.log($infinity.toString());
+  console.log($object.toString());
+  console.log($function.toString());
+  console.log($array.toString());
+  console.log($number.toString());
+  console.log($boolean.toString().toString());
+  console.groupEnd();
+
+  console.group('"" + value');
+  console.log("" + $null);
+  console.log("" + $undefined);
+  console.log("" + $nan);
+  console.log("" + $infinity);
+  console.log("" + $object);
+  console.log("" + $function);
+  console.log("" + $array);
+  console.log("" + $number);
+  console.log("" + $boolean);
+  console.groupEnd();
+
+  console.group('String(value)');
+  console.log(String($null));       // null
+  console.log(String($undefined));  // undefined
+  console.log(String($nan));        // NaN
+  console.log(String($infinity));   // Infinity
+  console.log(String($object));     // [object Object]
+  console.log(String($function));   // () => {}
+  console.log(String($array));      // 1,2
+  console.log(String($number));     // 123
+  console.log(String($boolean));    // true
+  console.groupEnd();
+</script>
+</body>
+</html>
