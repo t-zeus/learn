@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>dataset例子</title>
+</head>
+<body>
+<div class="canvas"></div>
+<span class="sparkline" data-ymin="0" data-ymax="10">1 1 1 2 2 3 4 5 5 4 3 5 6 7 7 4 2 1</span>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-sparklines/2.1.2/jquery.sparkline.js"></script>
+<script>
+  let sparklines = document.getElementsByClassName('sparkline');
+  for (let i = 0; i < sparklines.length; i++) {
+    let dataset = sparklines[i].dataset;
+    let ymin = parseFloat(dataset.ymin);
+    let ymax = parseFloat(dataset.ymax);
+    console.log(ymin, ymax);
+    let data = sparklines[i].textContent.split(' ').map(parseFloat);
+    console.log(data);
+    $('.canvas').sparkline(data);
+  }
+</script>
+</body>
+</html>
