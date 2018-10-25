@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>异步载入并执行</title>
+</head>
+<body>
+<script>
+  function loadasync(url) {
+    var head = document.getElementsByTagName('head')[0];
+    var script = document.createElement('script');
+    script.src = url;
+    head.appendChild(script);
+  }
+  loadasync('https://code.jquery.com/jquery-3.3.1.min.js');
+</script>
+</body>
+</html>

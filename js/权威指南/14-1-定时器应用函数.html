@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>定时器应用函数</title>
+</head>
+<body>
+<script>
+  /**
+   * 定时器应用函数
+   * @param {function}  f         回调函数
+   * @param {number}    start     开始 start（毫秒）后执行回调函数
+   * @param {number}    interval  回调函数重复执行间隔（毫秒）
+   * @param {number}    end       回调函数执行 end（毫秒）后结束重复执行
+   */
+  function invoke(f, start, interval, end) {
+    if (!start) {
+      start = 0;
+    }
+    if (arguments.length <= 2) {
+      setTimeout(f, start);
+    } else {
+      setTimeout(() => {
+        let h = setInterval(f, interval);
+        if (end) {
+          setTimeout(() => clearInterval(h), end);
+        }
+      }, start);
+    }
+  }
+
+  function getTime() {
+    function lpad(number, n) {
+      let str = number.toString();
+      if (str.length >= n) {
+        return str;
+      }
+      return '0'.repeat(n - str.length) + str;
+    }
+
+    let date = new Date();
+    let ret = '';
+    ret += date.getFullYear() + '-';
+    ret += (date.getMonth() + 1) + '-';
+    ret += date.getDay() + ' ';
+    ret += lpad(date.getHours(), 2) + ':';
+    ret += lpad(date.getMinutes(), 2) + ':';
+    ret += lpad(date.getSeconds(), 2) + '.';
+    ret += lpad(date.getMilliseconds(), 3);
+    return ret;
+  }
+
+  invoke(() => {
+    console.log('[' + getTime() + '] f runing...');
+  }, 1000, 200, 2000);
+</script>
+</body>
+</html>
