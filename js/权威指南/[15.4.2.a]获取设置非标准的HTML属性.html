@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>获取设置非标准的HTML属性</title>
+</head>
+<body>
+<style>
+  .avatar {
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+</style>
+<img WIDTH="100"/>
+<script>
+  let img = document.getElementsByTagName('img')[0];
+  let width = img.getAttribute('WIDTH');
+  img.setAttribute('class', 'avatar');
+  img.setAttribute('src', 'https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png');
+  console.log(img);
+  console.log(width);
+</script>
+</body>
+</html>
