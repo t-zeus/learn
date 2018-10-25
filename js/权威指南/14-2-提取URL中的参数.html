@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>提取URL中的参数</title>
+</head>
+<body>
+<script>
+  /**
+   * 通过 location.search 获取 url 中的参数
+   *
+   * 使用方式：
+   * var args = urlArgs();
+   * var q = args.q || '';
+   * var n = args.n ? parseInt(args.n) : 10;
+   */
+  function urlArgs() {
+    var args = {};
+    var query = location.search.substring(1); // 去掉 ?
+    var pairs = query.split('&');
+    for (var i = 0; i < pairs.length; i++) {
+      var pos = pairs[i].indexOf('=');
+      if (-1 === pos) {
+        continue;
+      }
+      var name = pairs[i].substring(0, pos);
+      var value = pairs[i].substring(pos + 1);
+      value = decodeURIComponent(value);
+      args[name] = value;
+    }
+    return args;
+  }
+
+  console.log(urlArgs());
+</script>
+</body>
+</html>
