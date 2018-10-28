@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>节点关系</title>
+  <style>
+    #box {
+      width: 100px;
+    }
+  </style>
+</head>
+<body>
+<div id="box">
+  <button>按钮</button>
+  <span>
+    <a href="#">google</a>
+  </span>
+</div>
+<script>
+  window.onload = function() {
+    let link = document.getElementsByTagName('a')[0];
+    // 父节点
+    console.log(link.parentNode);
+    // 祖先节点
+    console.log(link.parentNode.parentNode);
+
+    let btn = document.getElementsByTagName('button')[0];
+    btn.onclick = function() {
+      btn.parentNode.style.background = 'red';
+    };
+  };
+</script>
+</body>
+</html>
