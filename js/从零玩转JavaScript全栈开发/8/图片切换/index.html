@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>图片切换</title>
+</head>
+<body>
+<img src="./images/1.gif" alt="" width="250" id="logo"/>
+<script>
+  window.onload = function() {
+    function getNextImageName(name) {
+      const images = ['./images/1.gif', './images/2.gif', './images/3.gif', './images/4.gif', './images/5.gif'];
+      nextName = images[Math.floor(Math.random() * images.length)];
+      if (name === undefined) {
+        return nextName;
+      } else if (name === nextName) {
+        return getNextImageName(name);
+      }
+      return nextName;
+    }
+
+    let img = document.querySelector('#logo');
+    img.onmouseover = function() {
+      console.log('进入图片');
+      this.src = getNextImageName(this.src);
+    };
+    img.onmouseout = function() {
+      console.log('移出图片');;
+      this.src= getNextImageName(this.src);
+    }
+    img.onmousemove = function() {
+      console.log('图片上移动');;
+    }
+  };
+</script>
+</body>
+</html>
