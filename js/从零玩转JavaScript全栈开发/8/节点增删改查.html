@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>节点增删改</title>
+  <style>
+    #box {
+      width: 250px;
+      padding: 15px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      background: #eee;
+    }
+    #ibox img {
+      margin: 0 5px;
+      border: 1px solid #ccc;
+      padding: 1px;
+      border-radius: 5px;
+    }
+  </style>
+</head>
+<body>
+<div id="box">
+  <p>测试文本</p>
+  <div id="ibox"></div>
+  <div id="tool">
+    <button id="add">添加</button>
+    <button id="del">删除</button>
+  </div>
+
+</div>
+<script>
+  window.onload = function () {
+    let add  = document.getElementsByTagName('button')[0];
+    let del  = document.getElementsByTagName('button')[1]
+    let ibox = document.getElementById('ibox');
+    add.onclick = function() {
+      let img = document.createElement('img');
+      img.src = 'https://www.baidu.com/img/bd_logo1.png';
+      img.width = '100';
+      ibox.appendChild(img);
+    };
+    del.onclick = function() {
+      let img = document.getElementsByTagName('img')[0];
+      img.remove();
+    };
+  };
+</script>
+</body>
+</html>
