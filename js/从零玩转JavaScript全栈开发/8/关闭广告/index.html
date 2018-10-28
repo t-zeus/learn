@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>关闭广告</title>
+  <style>
+    #box {
+      width: 250px;
+      margin: 10px auto;
+      position: relative;
+    }
+
+    #close {
+      cursor: pointer;
+      position: absolute;
+      top: 18px;
+      right: 0;
+    }
+  </style>
+</head>
+<body>
+<div id="box">
+  <img src="./images/1.gif" alt="" id="pic" width="250"/>
+  <img src="./images/close.png" alt="" id="close"/>
+</div>
+<script>
+  window.onload = function() {
+    let box = document.querySelector('#box');
+    let close = document.querySelector('#close');
+    close.onclick = function() {
+      box.style.display = 'none';
+    };
+  };
+</script>
+</body>
+</html>
