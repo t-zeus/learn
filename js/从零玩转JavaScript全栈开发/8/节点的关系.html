@@ -19,12 +19,13 @@
 <script>
   window.onload = function() {
     let link = document.getElementsByTagName('a')[0];
+    let span = link.parentNode;
     // 父节点
-    console.log(link.parentNode);
+    console.log(span);
     // 祖先节点
     console.log(link.parentNode.parentNode);
 
-    let btn = document.getElementsByTagName('button')[0];
+    let btn = span.previousElementSibling || span.previousSibling;
     btn.onclick = function() {
       btn.parentNode.style.background = 'red';
     };
