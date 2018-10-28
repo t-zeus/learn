@@ -11,6 +11,8 @@
 </head>
 <body>
 <div id="box">
+  <!--注释-->
+  这是个测试
   <button>按钮</button>
   <span>
     <a href="#">google</a>
@@ -20,15 +22,28 @@
   window.onload = function() {
     let link = document.getElementsByTagName('a')[0];
     let span = link.parentNode;
+    let box = span.parentNode;
     // 父节点
     console.log(span);
     // 祖先节点
-    console.log(link.parentNode.parentNode);
+    console.log(box);
 
     let btn = span.previousElementSibling || span.previousSibling;
     btn.onclick = function() {
       btn.parentNode.style.background = 'red';
     };
+
+    // 第一个节点（非标签）
+    console.log(box.firstChild);
+
+    // 第一个标签 => button
+    console.log(box.firstElementChild || box.firstChild);
+
+    // 所有节点
+    console.log(box.childNodes);
+
+    // 非标准属性，获取所有标签
+    console.log(box.children);
   };
 </script>
 </body>
