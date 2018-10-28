@@ -25,10 +25,9 @@
 </div>
 <script>
   window.onload = function() {
-    let box = document.querySelector('#box');
     let close = document.querySelector('#close');
     close.onclick = function() {
-      box.style.display = 'none';
+      this.parentNode.style.display = 'none';
     };
   };
 </script>
