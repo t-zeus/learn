@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>轮播图</title>
+  <style>
+    #root {
+      width: 250px;
+      margin: 0 auto;
+      padding: 15px;
+      background: #eee;
+    }
+  </style>
+</head>
+<body>
+<div id="root">
+  <div>
+    <img src="./images/banner1.png" width="250" id="banner"/>
+  </div>
+  <div>
+    <button id="prev">上一张</button>
+    <button id="next">下一张</button>
+  </div>
+</div>
+<script>
+  let banner = document.getElementById('banner');
+  let prev = document.getElementById('prev');
+  let next = document.getElementById('next');
+
+  let curIndex = 1, maxIndex = 4, minIndex = 1;
+
+  prev.onclick = function() {
+    if (curIndex == minIndex) {
+      curIndex = maxIndex;
+    } else {
+      curIndex--;
+    }
+    banner.setAttribute('src', './images/banner' + curIndex + '.png');
+    console.log(banner.getAttribute('src'));
+  };
+
+  next.onclick = function() {
+    if (curIndex == maxIndex) {
+      curIndex = minIndex;
+    } else {
+      curIndex++;
+    }
+    banner.setAttribute('src', './images/banner' + curIndex + '.png');
+    console.log(banner.getAttribute('src'));
+  };
+</script>
+</body>
+</html>
