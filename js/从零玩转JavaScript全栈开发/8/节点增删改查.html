@@ -44,6 +44,9 @@
       let img = document.getElementsByTagName('img')[0];
       img.remove();
     };
+
+    let tool = ibox.nextElementSibling || ibox.nextSibling;
+    console.log(tool.cloneNode(false));
   };
 </script>
 </body>
