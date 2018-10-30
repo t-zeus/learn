@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>九宫格</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #container {
+            padding: 20px 50px;
+        }
+
+        #head {
+            padding: 20px 0;
+        }
+
+        #body {
+            position: relative;
+        }
+
+        .box img {
+            width: 120px;
+            height: 150px;
+        }
+
+        .box p {
+            font-size: 12px;
+            text-align: center;
+            background: #eee;
+            padding: 5px 0;
+        }
+
+        .box {
+            width: 120px;
+            border: 1px solid #ccc;
+            padding: 5px;
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+<div id="container">
+    <div id="head">
+        <button data-v="3">显示3列</button>
+        <button data-v="5">显示5列</button>
+        <button data-v="7">显示7列</button>
+    </div>
+    <div id="body">
+        <div class="box">
+            <img src="./images/1.webp"/>
+            <p>铁血战士</p>
+        </div>
+        <div class="box">
+            <img src="./images/2.webp"/>
+            <p>昨日晴空</p>
+        </div>
+        <div class="box">
+            <img src="./images/3.webp"/>
+            <p>功夫联盟</p>
+        </div>
+        <div class="box">
+            <img src="./images/4.webp"/>
+            <p>为你写诗</p>
+        </div>
+        <div class="box">
+            <img src="./images/5.webp"/>
+            <p>暮光.巴黎</p>
+        </div>
+        <div class="box">
+            <img src="./images/6.webp"/>
+            <p>悲伤逆流成河</p>
+        </div>
+        <div class="box">
+            <img src="./images/7.webp"/>
+            <p>李茶的姑妈</p>
+        </div>
+    </div>
+</div>
+<script>
+    window.onload = () => {
+        let head = document.querySelector('#head');
+        let body = document.querySelector('#body');
+        let btns = head.getElementsByTagName('button');
+        let opts = {left: 20, top: 20};
+        // 定义函数
+        let flexBox = (parentNode, cols, {left, top}) => {
+            let boxes = parentNode.children;
+            for (let i = 0; i < boxes.length; i++) {
+                let row = parseInt(i / cols);
+                let col = parseInt(i % cols);
+                boxes[i].style.left = ((boxes[i].offsetWidth + left) * col) + "px";
+                boxes[i].style.top = ((boxes[i].offsetHeight + top) * row) + "px";
+            }
+        };
+        // 绑定事件
+        for (let i = 0; i < btns.length; i++) {
+            btns[i].onclick = function () {
+                flexBox(body, this.dataset.v, opts);
+            }
+        }
+        // 默认显示
+        flexBox(body, 5, opts);
+    };
+
+</script>
+</body>
+</html>
