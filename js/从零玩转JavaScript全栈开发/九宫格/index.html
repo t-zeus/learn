@@ -9,6 +9,10 @@
             padding: 0;
         }
 
+        body {
+            background: #ddd;
+        }
+
         #container {
             padding: 20px 50px;
         }
@@ -21,6 +25,16 @@
             position: relative;
         }
 
+        button {
+            padding: 5px 10px;
+            border-radius: 3px;
+            border: 1px solid #999;
+        }
+        button:hover {
+            cursor: pointer;
+            background: #eee;
+        }
+
         .box img {
             width: 120px;
             height: 150px;
@@ -29,8 +43,16 @@
         .box p {
             font-size: 12px;
             text-align: center;
-            background: #eee;
+            background: #ddd;
             padding: 5px 0;
+        }
+        .box:hover {
+            border-color: darkred;
+            cursor: pointer;
+        }
+        .box:hover p {
+            background: darkred;
+            color: #fff;
         }
 
         .box {
@@ -38,6 +60,8 @@
             border: 1px solid #ccc;
             padding: 5px;
             position: absolute;
+            background: #fefefe;
+            border-radius: 5px;
         }
     </style>
 </head>
