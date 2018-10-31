@@ -1,0 +1,20 @@
+var man = {
+    name: '张三',
+    age: 100,
+    gender: 'M',
+    height: 180
+};
+function showPorps(obj) {
+    var result = '';
+    for (var prop in obj) {
+        if (obj.hasOwnProperty(prop)) {
+            result += 'prop=' + prop + ',value=' + obj[prop] + '\n';
+        }
+
+    }
+    console.log(result);
+}
+showPorps(man);
+
+console.log(Object.keys(man));
+console.log(Object.getOwnPropertyNames(man));
