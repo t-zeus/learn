@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    var empty = {};
+    var point = {x: 0, y: 0};
+    var point2 = {x: point.x, y: point.y + 1};
+    var book = {
+        "main title": "js", // 单引号
+        'sub-title': 'guide', // 双引号
+        "for": "hello", // 保留字
+        author: {
+            firstname: 'dav',
+            subname: 'json',
+        },
+        [1 + 2]: "3" // 动态计算
+    };
+    console.log(empty);
+    console.log(point);
+    console.log(point2);
+    console.log(book);
+</script>
+</body>
+</html>

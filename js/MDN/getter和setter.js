@@ -20,3 +20,19 @@ console.log(o.b);
 o.c = 100;
 console.log(o.a);
 
+
+var d = Date.prototype;
+Object.defineProperty(d, 'year', {
+    get: function () {
+        return this.getFullYear();
+    },
+    set: function (y) {
+        this.setFullYear(y)
+    }
+});
+
+var now = new Date();
+console.log(now.year);
+now.year = 2001;
+console.log(now);
+
