@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<script>
+/**
+ * 不存在 Object.create 则退化创建
+ */
+function inherit(p) {
+  if (p == null) {
+    throw TypeError();
+  }
+  if (Object.create) {
+    return Object.create(p);
+  }
+  var t = typeof p;
+  if (t !== "object" && t !== "function") {
+    throw TypeError();
+  }
+  function F() {}
+  F.prototype = p;
+  return new F();
+}
+console.log(inherit({x:1}));
+</script>
+</body>
+</html>
