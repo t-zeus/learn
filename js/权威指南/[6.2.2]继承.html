@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    /**
+     *  原型链查询
+     *
+     *  查询的时候会依次查询原型链，但是如果修改继承的属性，其实不会更改原型中的属性。
+     */
+    var a = {x:1};
+    var b = inherit(a);
+    b.y = 2;
+    var c = inherit(b);
+    c.z = 3;
+    console.log(c.toString()); // [object Object]
+    console.log(c.x + c.y); //3
+
+    c.x = 33;
+    console.log(c.x, a.x); // 33 1
+
+    function inherit(p) {
+      if (p == null) {
+        throw TypeError();
+      }
+      return Object.create(p);
+    }
+  </script>
+</body>
+</html>
