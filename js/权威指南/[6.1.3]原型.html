@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+<script>
+    /**
+     * 原型链
+     * new 构造函数() -> 构造函数.prototype
+     * {} / new Object() -> Object.prototype -> 不继承任何对象
+     * [] / new Array() -> Array.prototype -> Object.prototype
+     * new Date() -> Date.prototype -> Object.prototype
+     */
+    var arr = [];
+    var o = {};
+    console.log(arr);
+    console.log(o);
+    function Foo() {
+        this.a = 1;
+    }
+    var foo = new Foo();
+    console.log(foo); // 查看 __proto__ 属性
+</script>
+</body>
+</html>
