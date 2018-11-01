@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    /**
+     * 继承 getter & setting
+     */
+    var p = {
+      x: 1.0,
+      y: 1.0,
+      get r() {
+        return Math.sqrt(this.x * this.x + this.y * this.y);
+      },
+      set r(v) {
+        var old = Math.sqrt(this.x * this.x + this.y * this.y);
+        var radio = v / old;
+        this.x *= radio;
+        this.y *= radio;
+      },
+      get theta() {
+        return Math.atan2(this.y, this.x);
+      }
+    };
+
+    var o = inherit(p);
+    o.x = 3;
+    o.y = 4;
+    console.log(o.r);
+    o.r = 10;
+    console.log(o);
+
+    function inherit(p) {
+      return Object.create(p);
+    }
+  </script>
+</body>
+
+</html>
