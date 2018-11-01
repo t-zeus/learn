@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+<script>
+  /**
+   * 对象的属性有 key，value，和特性构成。
+   * 属性可以通过方法来设定，getter、setter 定义的属性是 存储器属性（accessor property）
+   *
+   * 注意：
+   */
+
+  var o = {
+    get name() {
+      return '张三';
+    },
+    set age(n) {
+      this.a = n;
+    }
+  };
+
+  console.log(o.name);
+  console.log(o.name = '李四');//不生效，只有读属性
+  console.log(o.name);
+</script>
+</body>
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+<script>
+  /**
+   * 检测属性是否存在：属性 in 对象
+   * 检测是否自有属性：对象.hasOwnProperty(属性)
+   */
+  var o = {x: 1, y: 2};
+  console.log("x" in o);
+  console.log("z" in o);
+  console.log("toString" in o); // 包含属性
+
+  console.log(o.hasOwnProperty('toString'));
+  console.log(o.hasOwnProperty('x')); // 非自有属性，继承而来
+</script>
+</body>
+</html>
