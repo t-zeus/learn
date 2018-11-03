@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>定时器匀速动画特效</title>
+  <style>
+    #box {
+      border: 1px solid #ccc;
+      width: 100px;
+      height: 100px;
+      background: #ddd;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+<button id="btn">启动</button>
+<div id="box"></div>
+<script>
+  window.onload = () => {
+    animation('btn', 'box', 10, 399);
+
+    function animation(btnId, boxId, step, target) {
+      // 获取元素
+      let btn = document.getElementById(btnId);
+      let box = document.getElementById(boxId);
+      // 定义变量
+      let begin = 0;
+      let timer = null;
+      btn.onclick = () => {
+        // 清除定时器
+        clearInterval(timer);
+        // 设置定时器
+        timer = setInterval(() => {
+          begin += step;
+          if (begin >= target) {
+            begin = target; // 防止超过 target 值
+            clearInterval(timer);
+          }
+          box.style.marginLeft = begin + "px";
+          console.log('margin-left:' + begin + 'px');
+        }, 50);
+      };
+    }
+  };
+</script>
+</body>
+</html>
