@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<script>
+
+  //---------------------
+  // 字符串解构赋值
+  //---------------------
+
+      // 字符串被转换成了一个类似数组的对象。
+      const [a1, b1, c1, d1, e1] = 'hello';
+      console.log(a1, b1, c1, d1, e1);
+
+      // 数组的对象都有一个 length 属性，因此还可以对这个属性解构赋值。
+      let {length: len1} = 'hello';
+      console.log(len1); // 5
+
+
+  //---------------------
+  // 数值和布尔值解构
+  //---------------------
+
+      //解构赋值时，如果等号右边是数值和布尔值，则会先转为对象
+      let {toString: s} = 123;
+      console.log(s === Number.prototype.toString); // true
+      let {toString: s2} = true;
+      console.log(s2 === Boolean.prototype.toString); // true
+
+
+
+
+  //---------------------
+  // 函数参数解构
+  //---------------------
+
+  function add([x, y]) {
+    return x + y;
+  }
+
+  console.log(add([1, 2])); // 3
+
+  let multi_arr = [[1, 2], [3, 4]];
+  let multi_arr2 = multi_arr.map(([a, b]) => a + b); // 箭头函数，参数解构
+  console.log(multi_arr);
+  console.log(multi_arr2);
+
+  // 函数参数解构使用默认值
+  function move({x = 0, y = 0} = {}) {
+    return [x, y];
+  }
+
+  console.log(move({x: 3, y: 8}));  // [3, 8]
+  console.log(move({x: 3}));        // [3, 0]
+  console.log(move({}));            // [0, 0]
+  console.log(move());              // [0, 0] 什么也不传，会用参数的默认值，然后再解构
+
+  // 不一样的写法，结果不同
+  function move2({x, y} = {x: 0, y: 0}) {
+    return [x, y];
+  }
+
+  console.log(move2({x: 3, y: 8}));  // [3, 8]
+  console.log(move2({x: 3}));        // [3, undefined]
+  console.log(move2({}));            // [undefined, undefined]
+  console.log(move2());              // [0, 0]
+
+  // undefined 会出发函数默认值
+  console.log([1, undefined, 3].map((x = 'yes') => x)); // [1, "yes", 3]
+
+  //---------------------
+  // 用途
+  //---------------------
+
+  // 1. 交换变量的值
+
+      let x = 1;
+      let y = 2;
+      [x, y] = [y, x];
+      console.log(x, y);// 2 1
+
+  // 2. 函数返回多个值，取值方便
+
+      // 返回数组
+      function example() {
+        return [1, 2, 3];
+      }
+
+      let [a, b, c] = example();
+      console.log(a, b, c); // 1 2 3
+
+      // 返回对象
+      function example2() {
+        return {
+          foo: 1,
+          bar: 2
+        };
+      }
+
+      let {foo, bar} = example2();
+      console.log(foo, bar); // 1 2
+
+  // 3. 方便函数参数和变量对应起来
+
+      // 参数是有顺序的
+      function f1([x, y, z]) {
+      }
+      f1([1, 2, 3]);
+
+      // 参数是无顺序的
+      function f2({x, y, z}) {
+      }
+      f2({z: 3, y: 2, x: 1});
+
+  // 4. 提取 JSON 数据
+
+      let res = {
+        code: 200,
+        status: 'ok',
+        data: [111, 222]
+      };
+      let {code, status, data} = res;
+      console.log(code, status, data); // 200 ok [111, 222]
+
+  // 5. 函数参数的默认值
+
+  // 6. 遍历 Map 结构
+  // 任何部署了 Iterator 接口的对象，都可以用for...of循环遍历。
+
+      const map = new Map();
+      map.set('first', 'hello');
+      map.set('second', 'world');
+
+      for (let [key, value] of map) {
+        console.log(key + " is " + value);
+      }
+
+      // 获取键名
+      for (let [key] of map) {
+      }
+
+      // 获取键值
+      for (let [,value] of map) {
+      }
+
+  // 7. 加载模块时，可以指定方法
+  // const { SourceMapConsumer, SourceNode } = require("source-map");
+
+
+
+
+
+</script>
+</body>
+</html>
